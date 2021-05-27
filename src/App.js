@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react";
 
 function App() {
+
+  const[passwordOne,setPasswordOne]=useState('')
+  const[passwordTwo,setPasswordTwo]=useState('')
+  const [window, setWindow]= useState()
+
+  const handlePasswordOne=(e)=>{
+    setPasswordOne(e.target.value)
+  }
+  const handlePasswordTwo=(e)=>{
+    setPasswordTwo(e.target.value)
+  }
+
+
+  const handleCheck=()=>{
+    if (setPasswordOne === setPasswordTwo){
+       return setWindow("Корректно");
+    }else setWindow("Ошибка")
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<div className="app">
+  <div className="main">
+  <input placeholder="Введите пароль" type="text" value={passwordOne}onChange={handlePasswordOne} />
+  </div>
+  <div className="main">
+  <input placeholder="Повторите пароль" type="text" value={passwordTwo} onChange={handlePasswordTwo}/>
+  </div>
+  <div className="btn">
+    <button onClick={handleCheck}>Проверить</button>
+  </div>
+  <div className="window">
+    {window}
+  </div>
+</div>
   );
 }
 
