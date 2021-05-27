@@ -14,10 +14,12 @@ function App() {
   }
 
 
+
   const handleCheck=()=>{
-    if (setPasswordOne === setPasswordTwo){
-       return setWindow("Корректно");
-    }else setWindow("Ошибка")
+    if (passwordOne === passwordTwo){
+      return setWindow("Корректно");
+    }
+    else setWindow("Ошибка")
   }
   return (
 <div className="app">
